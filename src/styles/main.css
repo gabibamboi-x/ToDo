@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: rgb(56, 56, 56);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  box-shadow: 1.5px 1.5px 2px rgba(128, 128, 128, 0.504)
+}
+
+header img {
+  width: 30px;
+  filter: invert(1);
+}
+
+header * {
+  cursor: pointer;
+  margin-inline: 10px;
+}
+
+div.search {
+  border: none;
+  padding: 0;
+  margin-right: auto;
+  cursor: default;
+}
+
+input.search {
+  cursor: text;
+  width: 260px;
+  border-radius: 15px;
+  border: 1px solid black;
+  display: block;
+  padding: 7px 3px 7px 35px;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+  filter: invert(1);
+  outline-color: red;
+}
+
+.login {
+  padding: 9px 15px;
+  border-radius: 15px;
+  border: .5px solid #555;
+}
+
+section {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 30px;
+}
+
+section .menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid white;
+  color: white;
+  padding-block: 40px;
+  font-size: 20px;
+}
+
+section .menu-item {
+  height: max-content;
+  display: flex;
+  align-items: center;
+  flex: 0;
+  padding: 5px 0;
+}
+
+section .menu img {
+  padding-right: 10px;
+}
+
+section .main {
+  padding: 20px 30px;
+}
+
+section .content {
+  height: 100%;
+  color: white;
+  padding: 20px;
+}
+
+footer {
+  padding: 10px;
+  margin-top: auto;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: rgb(208, 208, 208);
+}
+
+a img {
+  width: 20px;
+}
