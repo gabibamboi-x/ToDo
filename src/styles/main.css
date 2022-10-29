@@ -1,3 +1,7 @@
+:root {
+  --mainColor: white;
+}
+
 @font-face {
   font-family: ubuntu;
   src: url(../Fonts/Ubuntu/Ubuntu-Medium.ttf);
@@ -15,6 +19,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background: rgb(56, 56, 56);
+  overflow: hidden;
 }
 
 header {
@@ -60,7 +65,7 @@ input.search {
   border: .5px solid #555;
 }
 
-section {
+section.initial {
   display: flex;
   height: calc(100vh - 94.5px); /* maximum height minus the header and footer */
 }
@@ -71,7 +76,7 @@ section .menu {
   height: 100%;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--mainColor);
   padding: 40px 30px;
   font-size: 20px;
 }
@@ -80,7 +85,7 @@ section .menu-item {
   height: max-content;
   display: flex;
   align-items: center;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 }
 
 .menu-item p, 
@@ -114,7 +119,7 @@ section .menu .line {
   right: 0;
   top: 35px;
 
-  border: 1px solid white;
+  border: 1px solid var(--mainColor);
   border-radius: 50%;
 }
 
@@ -132,7 +137,7 @@ section .content {
   width: 100%;
   align-self: center;
   height: 100%;
-  color: white;
+  color: var(--mainColor);
   padding: 20px;
 }
 
