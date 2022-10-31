@@ -55,35 +55,33 @@
           </div>
         </div>
         <div class="taskview">
-
         </div>
       </div>
     </div>
   </section>
 
-  <div class="modal-wrapper">
-    <div class="overlay hidden"></div>
-    <section class="modal hidden modal-project">
-      <input type="text" placeholder="Title" id="todotitle">
-      <textarea type="text" placeholder="Description (optional)" id="tododescription"></textarea>
-      <div class="date-picker">
-        <p>Due Date:</p>
-        <input type="date" name="dueDate" id="dueDate">
+  <div class="overlay"></div>
+  <section class="modal">
+    <input type="text" placeholder="Title" id="todotitle">
+    <textarea type="text" placeholder="Description (optional)" id="tododescription"></textarea>
+    <div class="date-picker">
+      <p>Due Date:</p>
+      <input type="date" name="dueDate" id="dueDate">
+    </div>
+    <div class="modal-priority-select">
+      <p>Priority:</p>
+      <div>
+        <button class="priorityBtn" id="lowP">Low</button>
+        <button class="priorityBtn" id="mediumP">Medium</button> 
+        <button class="priorityBtn" id="highP">High</button>
       </div>
-      <div class="modal-priority-select">
-        <p>Priority:</p>
-        <div>
-          <button id="lowP">Low</button>
-          <button id="mediumP">Medium</button> 
-          <button id="highP">High</button>
-        </div>
-      </div>
-      <div class="nav-btn-modal">
-        <button class="cancel">Cancel</button>
-        <button class="confirm">Add task</button>
-      </div>
-    </section>
-  </div>
+    </div>
+    <div class="nav-btn-modal">
+      <div class="alert"></div>
+      <button class="cancel">Cancel</button>
+      <button class="confirm">Add task</button>
+    </div>
+  </section>
 
 
   <footer>
