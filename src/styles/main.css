@@ -188,6 +188,12 @@ section .content {
   margin-left: auto;
 }
 
+.taskPriorityShow {
+  text-shadow: .5px .5px .5px rgb(112, 111, 111);
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+  padding: 5px;
+}
 
 
 footer {

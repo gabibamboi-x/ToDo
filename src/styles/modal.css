@@ -127,7 +127,7 @@ section.modal {
 }
 
 #lowP {
-  background-color: green;
+  background-color: rgb(13, 150, 13);
 }
 #mediumP {
   background-color: rgba(0, 191, 255, 0.888);

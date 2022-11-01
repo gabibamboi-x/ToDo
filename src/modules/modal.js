@@ -1,12 +1,13 @@
 import events from "./events"
 
 class todo {
-  constructor(title, dueDate = 'no due date', description, priority, checked) {
+  constructor(title, dueDate = 'no due date', description, priority, checked, projectName = 'normal') {
     this.title = title,
     this.dueDate = dueDate,
     this.description = description,
     this.priority = priority,
-    this.checked = checked
+    this.checked = checked,
+    this.projectName = projectName
   }
 }
 
