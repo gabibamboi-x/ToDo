@@ -1,12 +1,13 @@
 import events from "./events"
 
 class todo {
-  constructor(title, dueDate = 'no due date', description, priority, checked, projectName = 'normal') {
+  constructor(title, dueDate = 'no due date', description, priority, checked, projectName = 'normal', overdue) {
     this.title = title,
     this.dueDate = dueDate,
     this.description = description,
     this.priority = priority,
     this.checked = checked,
+    this.overdue = overdue,
     this.projectName = projectName
   }
 }
@@ -81,5 +82,4 @@ class todo {
     currentPriority = 'lowP'
     alert.innerHTML = ''
   }
-
 })()

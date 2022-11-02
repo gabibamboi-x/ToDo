@@ -1,10 +1,46 @@
-import events from "./events"
-import { allTasks, Today, Upcoming, Important, overdue } from "./createToDo.js"
+// get the menu options
+const allTasksSelection = document.querySelector('.alltasks')
+const todaySelection = document.querySelector('.today')
+const upcomingSelection = document.querySelector('.upcoming')
+const importantSelection = document.querySelector('.important')
 
-const taskView = document.querySelector('.taskview')
-const allTasksDiv = document.createElement('div')
+// get the sorted tasks div
+const allContent = document.querySelector('.allContent')
+const todayContent = document.querySelector('.todayContent')
+const upcomingContent = document.querySelector('.upcomingContent')
+const importantContent = document.querySelector('.importantContent')
 
-events.on('allTasksChanged', (newTask) => {
-  allTasksDiv.append(newTask)
-  taskView.append(allTasksDiv)
+const currentTab = document.querySelector('.currentTab')
+
+// handle the tab-switching logic
+allTasksSelection.addEventListener('click', () => {
+  [todayContent, upcomingContent, importantContent].forEach(el => {
+    el.style.display = 'none'
+  })
+  allContent.style.display = 'block'
+  currentTab.textContent = 'All Tasks'
+})
+
+todaySelection.addEventListener('click', () => {
+  [allContent, upcomingContent, importantContent].forEach(el => {
+    el.style.display = 'none'
+  })
+  todayContent.style.display = 'block'
+  currentTab.textContent = 'Today'
+})
+
+upcomingSelection.addEventListener('click', () => {
+  [allContent, todayContent, importantContent].forEach(el => {
+    el.style.display = 'none'
+  })
+  upcomingContent.style.display = 'block'
+  currentTab.textContent = 'Upcoming'
+})
+
+importantSelection.addEventListener('click', () => {
+  [allContent, upcomingContent, todayContent].forEach(el => {
+    el.style.display = 'none'
+  })
+  importantContent.style.display = 'block'
+  currentTab.textContent = 'Important!'
 })
