@@ -155,6 +155,7 @@ section .content {
 }
 
 .taskview {
+  position: relative;
   height: 70vh;
   overflow-y: scroll;
   overflow: auto;
@@ -193,6 +194,31 @@ section .content {
   background-color: rgb(233, 233, 233);
   border-radius: 5px;
   padding: 5px;
+}
+
+.allContent {
+  display: block;
+}
+
+.todayContent {
+  display: none;
+}
+
+.upcomingContent {
+  display: none;
+}
+
+.importantContent {
+  display: none;
+}
+
+.allContent,
+.todayContent,
+.upcomingContent,
+.importantContent {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 
