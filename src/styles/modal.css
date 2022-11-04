@@ -3,12 +3,11 @@
   --transparent: rgba(0, 0, 0, 0);
 }
 
-.overlay {
+.overlay.active-overlay {
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: rgba(65, 65, 65, 0.9);
-  display: none;
 }
 
 .overlayShow {
@@ -43,11 +42,15 @@ section.modal {
   display: none;
 }
 
-.show {
+.modal.active-modal {
+  display: block;
+}
+
+.modal.show {
   animation: animateModalDown .35s;
 }
 
-.hide {
+.modal.hide {
   animation: animateModalUp .35s;
 }
 

@@ -191,25 +191,12 @@ section .content {
 
 .taskPriorityShow {
   text-shadow: .5px .5px .5px rgb(112, 111, 111);
-  background-color: rgb(233, 233, 233);
   border-radius: 5px;
   padding: 5px;
 }
 
-.allContent {
-  display: block;
-}
-
-.todayContent {
-  display: none;
-}
-
-.upcomingContent {
-  display: none;
-}
-
-.importantContent {
-  display: none;
+.taskPriorityShow img {
+  width: 30px;
 }
 
 .allContent,
@@ -219,6 +206,11 @@ section .content {
   position: absolute;
   height: 100%;
   width: 100%;
+  display: none;
+}
+
+.active-tab {
+  display: block;
 }
 
 
