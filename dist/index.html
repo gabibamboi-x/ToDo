@@ -20,29 +20,46 @@
 
   <section class="initial">
     <div class="menu">
+
       <div class="menu-item data-1">
         <img src="./Images/alltasks.svg" alt="alltasks">
         <p>All Tasks</p>
       </div>
+
       <div class="menu-item data-2">
         <img src="./Images/today.svg" alt="today">
         <p>Today</p>
       </div>
+
       <div class="menu-item data-3">
         <img src="./Images/upcoming.svg" alt="upcoming">
         <p>Upcoming</p>
       </div>
+
       <div class="menu-item data-4">
         <img src="./Images/important.svg" alt="important">
         <p>Important</p>
       </div>
-      <div class="projects">
-        <p>Projects</p>
-        <div>
-          <img src="./Images/newToDo.png" alt="newProject">
-          <img src="./Images/close_projects.svg" alt="">
+
+      <div class="main-project-menu">
+        <div class="menu-item data-5">
+          <p>Projects</p>
+        </div>
+        <div class="projectMenuOption">
+          <img src="./Images/newToDo.png" class="newProject">
+          <img src="./Images/close_projects.svg" class="expand-projects">
         </div>
       </div>
+      <div class="addNewProject hideNewProject">
+        <input type="text" class="newProjectInput" placeholder="Project Name">
+        <div>
+          <button class="cancelNewProject">Cancel</button>
+          <button class="confirmNewProject">Add Project</button>
+        </div>
+      </div>
+
+      <div class="allProjects"></div>
+
       <div class="line"></div>
     </div>
     <div class="main">
@@ -59,6 +76,7 @@
           <div class="tab data-2 todayContent"></div>
           <div class="tab data-3 upcomingContent"></div>
           <div class="tab data-4 importantContent"></div>
+          <div class="tab data-5 projectContent"></div>
         </div>
       </div>
     </div>
@@ -71,6 +89,11 @@
     <div class="date-picker">
       <p>Due Date:</p>
       <input type="date" name="dueDate" id="dueDate">
+      <p class="selectLocation">Add to</p>
+
+      <select class="location">
+        <option value="inbox">Inbox</option>
+      </select>
     </div>
     <div class="modal-priority-select">
       <p>Priority:</p>
