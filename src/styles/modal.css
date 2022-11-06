@@ -86,7 +86,7 @@ section.modal {
 .date-picker {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-inline: 20px;
 }
 
 #dueDate {
@@ -96,10 +96,20 @@ section.modal {
   padding: 5px;
   padding-left: 0;
   margin-left: 10px;
+  margin-right: 15px;
   filter: invert(1);
   opacity: .85;
   outline: none;
   font-size: 15px;
+}
+
+select {
+  padding: 5px;
+  margin: 0 5px;
+  background-color: var(--transparent);
+  color: var(--mainColor);
+  border: none;
+  outline: none;
 }
 
 .modal-priority-select * {
@@ -155,13 +165,14 @@ section.modal {
 
 .confirm,
 .cancel {
-  width: 75px;
+  width: 90px;
   font-size: 15px;
   padding: 5px;
-  border: none;
   border-radius: 5px;
   color: var(--mainColor);
   box-shadow: inset 0 0 0 var(--transparent);
+  background-color: var(--transparent);
+  border: .5px solid var(--mainColor);
   transition: ease-in .25s;
   cursor: pointer;
 }
@@ -172,12 +183,4 @@ section.modal {
 
 .cancel:hover {
   box-shadow: inset 0px 0px 75px red;
-}
-
-.cancel {
-  background-color: var(--transparent);
-}
-
-.confirm {
-  background-color: var(--transparent);
 }

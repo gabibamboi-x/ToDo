@@ -1,0 +1,118 @@
+.menu-item.data-5 {
+  padding: 0;
+}
+
+.main-project-menu {
+  width: 100%;
+  color: rgba(204, 203, 203, 0.875);
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projectMenuOption img {
+  filter: invert(1);
+  width: 30px;
+  opacity: .65;
+}
+
+.newProject,
+.expand-projects {
+  cursor: pointer;
+}
+
+.addNewProject {
+  width: 100%;
+  display: none;
+}
+
+.addNewProject div {
+  display: flex;
+  gap: 3%;
+  padding: 7.5px 0;
+}
+
+.addNewProject button {
+  width: 48.5%;
+  border-radius: 7.5px;
+  padding: 5px 10px;
+  border: none;
+  transition: ease-in .25s;
+  background-color: var(--transparent);
+  color: var(--mainColor);
+  border: .5px solid var(--mainColor);
+  cursor: pointer;
+}
+
+.confirmNewProject:hover {
+box-shadow: inset 0px 0px 75px green;
+}
+
+.cancelNewProject:hover {
+  box-shadow: inset 0px 0px 75px red;
+}
+
+.newProjectInput {
+  width: 100%;
+  height: 25px;
+  border-radius: 7.5px;
+  border: none;
+  padding: 7.5px;
+  outline: none;
+}
+
+.no-pr-title {
+  font-size: 15px;
+  text-align: center;
+  color: red;
+  height: 25px;
+  padding-top: 5px;
+}
+
+.showNewProject {
+  display: block;
+  animation: fadeIn .3s
+}
+
+.hideNewProject {
+  animation: fadeOut .3s;
+}
+
+.allProjects {
+  display: none;
+}
+
+.expanded {
+  animation: rotate .5s;
+  transform: rotate(-90deg);
+}
+
+.collapsed {
+  animation: rotateBack .5s;
+
+}
+
+.showProjects {
+  display: block;
+  animation: fadeIn .3s;
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotateBack {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
