@@ -1,7 +1,7 @@
 import events from "./events"
 
 class todo {
-  constructor(title, dueDate, description, priority, checked, projectName = 'Inbox', overdue, index = 0) {
+  constructor(title, dueDate, description, priority, checked, projectName, overdue, index = 0) {
     this.title = title,
     this.dueDate = dueDate,
     this.description = description,
@@ -23,6 +23,7 @@ class todo {
   const titleValue = document.querySelector('#todotitle')
   const descriptionValue = document.querySelector('#tododescription')
   const dateValue = document.querySelector('#dueDate')
+  const location = document.querySelector('.location')
 
 
   let currentPriority = 'lowP'
@@ -59,7 +60,7 @@ class todo {
         modal.classList.add('hide')
         overlay.classList.add('overlayHide')
 
-        setTimeout(function(status) {
+        setTimeout(function() {
           // hide the modal and overlay
           modal.classList.remove('active-modal')
           overlay.classList.remove('active-overlay')
@@ -82,12 +83,18 @@ class todo {
       alert.innerHTML = 'Please add a due date'
       return
     }
-    
+
     // create new ToDo object and emit it, reset the modal and close it
-    const NewTodo = new todo(titleValue.value, dateValue.value, descriptionValue.value, currentPriority)
+    const NewTodo = new todo(titleValue.value, dateValue.value, descriptionValue.value, currentPriority, 'off', location.value)
     closeModal.click()
     resetModalInfo()
     events.emit('newValidTask', NewTodo)
+
+    // confirm the new task to the user
+    document.querySelector('.feedback').innerText = 'Task added!'
+    setTimeout(function() {
+      document.querySelector('.feedback').innerText = ''
+    }, 2000)
   })
   
   function resetModalInfo() {
