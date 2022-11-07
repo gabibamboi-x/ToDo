@@ -1,6 +1,5 @@
 import events from "./events"
-
-export const allProjects = [] 
+import { allProjects } from "../index"
 
 const newProjectDiv = document.querySelector('.addNewProject')
 
@@ -51,8 +50,10 @@ document.querySelector('.expand-projects').addEventListener('click', () => {
 
   const expand_btn = document.querySelector('.expand-projects')
   const projects_list = document.querySelector('.allProjects')
+  const allProjects = document.querySelector('.allProjects')
   
   if (status === 'collapsed') {
+    allProjects.classList.add('showAllProjects')
     expand_btn.classList.remove('collapsed')    
     projects_list.classList.remove('hideProjects')
     expand_btn.classList.add('expanded')
@@ -61,6 +62,7 @@ document.querySelector('.expand-projects').addEventListener('click', () => {
     return
   }
 
+  allProjects.classList.remove('showAllProjects')
   expand_btn.classList.remove('expanded')
   expand_btn.classList.add('collapsed')
   projects_list.classList.remove('showProjects')

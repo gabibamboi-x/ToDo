@@ -1,7 +1,8 @@
+import { allTasks } from "../index"
 import events from "./events"
 
 class todo {
-  constructor(title, dueDate, description, priority, checked, projectName, overdue, index = 0) {
+  constructor(title, dueDate, description, priority, checked, projectName, overdue, uniqueID) {
     this.title = title,
     this.dueDate = dueDate,
     this.description = description,
@@ -9,7 +10,7 @@ class todo {
     this.checked = checked,
     this.overdue = overdue,
     this.projectName = projectName,
-    this.index = index
+    this.uniqueID = uniqueID
   }
 }
 
@@ -84,17 +85,13 @@ class todo {
       return
     }
 
+
     // create new ToDo object and emit it, reset the modal and close it
-    const NewTodo = new todo(titleValue.value, dateValue.value, descriptionValue.value, currentPriority, 'off', location.value)
+    const NewTodo = new todo(titleValue.value, dateValue.value, descriptionValue.value, currentPriority, 'off', location.value, false)
     closeModal.click()
     resetModalInfo()
+    allTasks.push(NewTodo)
     events.emit('newValidTask', NewTodo)
-
-    // confirm the new task to the user
-    document.querySelector('.feedback').innerText = 'Task added!'
-    setTimeout(function() {
-      document.querySelector('.feedback').innerText = ''
-    }, 2000)
   })
   
   function resetModalInfo() {

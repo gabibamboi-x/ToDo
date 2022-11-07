@@ -80,7 +80,19 @@ box-shadow: inset 0px 0px 75px green;
 }
 
 .allProjects {
+  padding: 10px 0;
+  color: rgb(209, 209, 209);
   display: none;
+}
+
+.orderedProjects {
+  list-style: circle;
+  padding-left: 16px;
+
+}
+
+.showAllProjects {
+  display: block;
 }
 
 .expanded {

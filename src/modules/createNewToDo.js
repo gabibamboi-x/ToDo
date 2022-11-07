@@ -1,15 +1,14 @@
 import greenFlag from "../Images/greenFlag.png"
 import blueFlag from "../Images/blueFlag.png"
 import redFlag from "../Images/redFlag.png"
-
-export const allTasks = []
+import { intlFormatDistance } from "date-fns"
 
 export function createTaskNode(el) {
   // create the task node and give them class names 
   // with their index number in the array
   // this will help in deleting the task later on
   const newTask = document.createElement('div')
-  newTask.setAttribute('class', 'index' + (allTasks.length - 1) + ' task')
+  newTask.setAttribute('class', 'ID>' + el.uniqueID + ' task')
 
   // create checkbox
   const checkbox = document.createElement('input')
@@ -31,7 +30,7 @@ export function createTaskNode(el) {
   const taskDueDate = document.createElement('p')
   taskDueDate.setAttribute('class', 'dueDate_p')
   // format the date
-  taskDueDate.innerHTML = new Date(el.dueDate).toLocaleDateString('us-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
+  taskDueDate.innerHTML = 'Due ' + intlFormatDistance(new Date(el.dueDate), new Date, { unit: 'day' })
 
   // create the priority and it's styling
   const taskPriority = document.createElement('p')
