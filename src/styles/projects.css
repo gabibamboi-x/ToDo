@@ -80,9 +80,12 @@ box-shadow: inset 0px 0px 75px green;
 }
 
 .allProjects {
-  padding: 10px 0;
+  height: calc(100vh - 441px);
+  padding: 25px 0;
   color: rgb(209, 209, 209);
   display: none;
+  overflow-y: scroll;
+  overflow: auto;
 }
 
 .orderedProjects {

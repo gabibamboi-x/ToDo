@@ -139,6 +139,7 @@ section .menu .line {
 
 h1 {
   font-size: 30px;
+  font-weight: 500;
 }
 
 section .content {
@@ -185,12 +186,11 @@ section .content {
 }
 
 .task {
-  background-color: rgb(101, 103, 104);
+  background-color: rgb(75, 75, 75);
   margin-top: 15px;
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  gap: 2%;
   border-radius: 10px;
 }
 
@@ -198,13 +198,17 @@ section .content {
   margin-left: auto;
 }
 
-.taskPriorityShow {
+.optionDiv {
   text-shadow: .5px .5px .5px rgb(112, 111, 111);
   border-radius: 5px;
   padding: 5px;
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: 20px;
 }
 
-.taskPriorityShow img {
+.optionDiv img {
   width: 30px;
 }
 
@@ -221,6 +225,21 @@ section .content {
 
 .active-tab {
   display: block;
+}
+
+.dueContent {
+  display: flex;
+  gap: 8px;
+  padding: 5px 0px;
+}
+
+.dueContent img {
+  width: 20px;
+  filter: invert(1);
+}
+
+.task > div > p {
+  padding-top: 3px;
 }
 
 .feedback {

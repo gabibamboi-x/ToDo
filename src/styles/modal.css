@@ -111,6 +111,7 @@ select {
   color: var(--mainColor);
   border: none;
   outline: none;
+  width: 130px;
 }
 
 .modal-priority-select * {
@@ -138,6 +139,10 @@ select {
   cursor: pointer;
   width: 75px;
   margin-right: 5px;
+}
+
+.active-selection {
+  border: 1px solid white
 }
 
 #lowP {
