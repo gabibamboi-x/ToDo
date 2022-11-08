@@ -6,12 +6,6 @@ export function render(el) {
   // check for the date and if a task should be put in the today section or upcoming
   const currentDistance = intlFormatDistance(new Date(el.dueDate), new Date, { unit: 'day' }).split(' ')
 
-
-  if (currentDistance[0] === 'yesterday' || currentDistance[2] === 'ago') {
-    el.overdue = true
-  }
-
-
   if (el.projectName.toLowerCase() === 'inbox' ) {    
 
     if((currentDistance[0] === 'in' && currentDistance[1] > 0 && 
@@ -32,6 +26,5 @@ export function render(el) {
     return
   }
 
-  
   document.querySelector('#' + el.projectName ).appendChild(createTaskNode(el))
 };

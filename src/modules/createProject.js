@@ -5,7 +5,8 @@ export default function createTitleElements(p_title) {
   // create the title list for the menu
   const newLi = document.createElement('li')
   const title = document.createElement('p')
-  title.innerText = p_title
+  title.innerText = p_title.replace(/_/g, ' ')
+  // setting the same classes as the main menu options to work with the tab switching function
   newLi.setAttribute('class', 'menu-item data-' + 
     (allProjects.length + 6))
   newLi.appendChild(title)
@@ -25,5 +26,6 @@ export default function createTitleElements(p_title) {
   document.querySelector('.taskview').appendChild(contentView)
   document.querySelector('.location').appendChild(newOption)
 
+  // call the updateMenuListeners to add listeners to the new projects menu options
   updateMenuListeners()
 }

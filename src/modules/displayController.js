@@ -34,7 +34,7 @@ document.querySelector('.menu-nav').addEventListener('click', () => {
     
     setTimeout(() => {
       menu.style.display = 'none'
-    }, 500)
+    }, 400)
 
     state = 'closed'
     return

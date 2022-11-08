@@ -93,11 +93,21 @@ class todo {
     allTasks.push(NewTodo)
     events.emit('newValidTask', NewTodo)
   })
+
+  document.querySelectorAll('.priorityBtn').forEach(el => el.addEventListener('click', () => {
+    
+    document.querySelectorAll('.priorityBtn').forEach(btn => {
+      btn.classList.remove('active-selection')
+    })
+
+    el.classList.add('active-selection')
+  }))
   
   function resetModalInfo() {
     titleValue.value = ''
     descriptionValue.value = ''
     currentPriority = 'lowP'
     alert.innerHTML = ''
+    document.querySelector('#lowP').click()
   }
 })()
