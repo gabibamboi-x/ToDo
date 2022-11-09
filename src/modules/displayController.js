@@ -14,7 +14,10 @@ export default function updateMenuListeners() {
 
       // add the active-tab to the clicked element
       const tabs = document.querySelector('.taskview')
-      tabs.querySelector('.' + el.classList.value.split(' ')[1]).classList.add('active-tab')
+      const currTab = tabs.querySelector('.' + el.classList.value.split(' ')[1])
+      if (currTab) {
+       currTab.classList.add('active-tab') 
+      }
       
       // update the tab title
       document.querySelector('.currentTab').innerText = el.querySelector('p').innerText

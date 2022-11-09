@@ -1,5 +1,5 @@
 import events from "./events"
-import { allProjects } from "../index"
+import { allProjects, projectID } from "../index"
 
 const newProjectDiv = document.querySelector('.addNewProject')
 
@@ -12,12 +12,14 @@ document.querySelector('.newProject').addEventListener('click', () => {
 // close the input if the user changes his mind
 document.querySelector('.cancelNewProject').addEventListener('click', () => {
   newProjectDiv.classList.add('hideNewProject')
+
   // add a delay to allow the animation to play
   setTimeout( function() {
     newProjectDiv.querySelector('.newProjectInput').value = ''
     newProjectDiv.classList.remove('showNewProject')
-  }, 300)
-})
+  }, 200)
+
+  })
 
 // remove the alert on focus
 document.querySelector('.newProjectInput').addEventListener('focus', () => {
@@ -27,18 +29,20 @@ document.querySelector('.newProjectInput').addEventListener('focus', () => {
 
 document.querySelector('.confirmNewProject').addEventListener('click', () => {
   // get the input value
-  const p_title = newProjectDiv.querySelector('.newProjectInput').value
+  const newProject = {}
+  newProject.title = newProjectDiv.querySelector('.newProjectInput').value
+  newProject.id = projectID
 
   // show an alert if there is no title and return
-  if (!p_title) {
+  if (!newProject.title) {
     document.querySelector('.no-pr-title').innerText = 'Project Name Required'
     return
   }
 
   // push and emit the new title
   // use regex for the id's in the DOM
-  allProjects.push(p_title.replace(/\s/g, '_'))
-  events.emit('newProjectAdded', p_title.replace(/\s/g, '_'))
+  allProjects.push(newProject)
+  events.emit('newProjectAdded', newProject)
 
   // close the input section
   document.querySelector('.cancelNewProject').click()

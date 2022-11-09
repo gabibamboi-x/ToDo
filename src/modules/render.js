@@ -1,5 +1,6 @@
 import { intlFormatDistance } from "date-fns"
 import { createTaskNode } from "./createNewToDo"
+import { allProjects, allTasks, updateStorage } from ".."
 
 export function render(el) {
 
@@ -26,5 +27,12 @@ export function render(el) {
     return
   }
 
-  document.querySelector('#' + el.projectName ).appendChild(createTaskNode(el))
+  // check if the task has a project name other than inbox
+  allProjects.forEach(pr => {
+    if (pr.title === el.projectName) {
+      document.querySelector('.tab.p' + pr.id).appendChild(createTaskNode(el))
+    }
+  })
+
+
 };

@@ -2,7 +2,7 @@ import greenFlag from "../Images/greenFlag.png"
 import blueFlag from "../Images/blueFlag.png"
 import redFlag from "../Images/redFlag.png"
 import due from "../Images/dueDate.png"
-import bin from "../Images/bin.png"
+import edit from "../Images/edit.png"
 import { intlFormatDistance } from "date-fns"
 
 
@@ -56,33 +56,31 @@ export function createTaskNode(el) {
   optionDiv.setAttribute('class', 'optionDiv')
 
   const binIcon = new Image
-  binIcon.src = bin
-  binIcon.style.opacity = '0.7'
+  binIcon.src = edit
+  binIcon.style.opacity = '0.9'
+  binIcon.style.filter = 'invert(1)'
   binIcon.setAttribute('class', 'bin')
 
-  // create the priority and it's styling
-  const taskPriority = document.createElement('p')
-  taskPriority.setAttribute('class', 'taskPriorityShow')
+  
   // set the flag color based on priority
   switch (el.priority.slice(0, -1)) {
     case 'low':
       const green = new Image
       green.src = greenFlag
-      taskPriority.appendChild(green)
+      optionDiv.appendChild(green)
       break
-    case 'medium':
-      const blue = new Image
-      blue.src = blueFlag
-      taskPriority.appendChild(blue)
-      break
-    case 'high':
-      const red = new Image
-      red.src = redFlag
-      taskPriority.appendChild(red)
-      break
-  }
-
-  optionDiv.appendChild(taskPriority)
+      case 'medium':
+        const blue = new Image
+        blue.src = blueFlag
+        optionDiv.appendChild(blue)
+        break
+        case 'high':
+          const red = new Image
+          red.src = redFlag
+          optionDiv.appendChild(red)
+          break
+        }
+        
   optionDiv.appendChild(binIcon)
 
   // append the created elements

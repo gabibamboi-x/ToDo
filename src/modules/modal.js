@@ -85,12 +85,11 @@ class todo {
       return
     }
 
-
+    
     // create new ToDo object and emit it, reset the modal and close it
     const NewTodo = new todo(titleValue.value, dateValue.value, descriptionValue.value, currentPriority, 'off', location.value, false)
     closeModal.click()
     resetModalInfo()
-    allTasks.push(NewTodo)
     events.emit('newValidTask', NewTodo)
   })
 
