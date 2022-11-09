@@ -126,6 +126,20 @@ section .menu-item {
   padding-right: 10px;
 }
 
+.menu > .data-1 p{
+  font-size: 21px;
+  font-weight: 600;
+}
+
+ol > li {
+  display: flex;
+  justify-content: space-between;
+}
+
+li img {
+  width: 30px;
+}
+
 section .menu .line {
   position: absolute;
   width: 0;
@@ -198,18 +212,24 @@ section .content {
   margin-left: auto;
 }
 
+.taskPriorityShow {
+  padding: 0;
+  margin: 0;
+}
+
+
 .optionDiv {
   text-shadow: .5px .5px .5px rgb(112, 111, 111);
   border-radius: 5px;
   padding: 5px;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   margin-left: auto;
-  margin-right: 20px;
 }
 
 .optionDiv img {
   width: 30px;
+  height: 30px;
 }
 
 .allContent,
@@ -230,16 +250,21 @@ section .content {
 .dueContent {
   display: flex;
   gap: 8px;
-  padding: 5px 0px;
+  padding-top: 14px;
+  padding-bottom: 5px;
 }
 
 .dueContent img {
   width: 20px;
   filter: invert(1);
+  cursor: pointer;
 }
 
 .task > div > p {
-  padding-top: 3px;
+  padding-top: 5px;
+  font-size: 12px;
+  height: 30px;
+  overflow-y: auto;
 }
 
 .feedback {

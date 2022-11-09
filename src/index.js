@@ -21,16 +21,20 @@ const storedProjects = JSON.parse(getProjects)
 
 export const allProjects = []
 export const allTasks = []
-// create new ID starting at 141 (why at 141 you may be asking? i don't know 1 seems to low for an id number)
+// create new IDs starting at 141 (why at 141 you may be asking? i don't know 1 seems to low for an id number)
 export let taskID = 141
+export let projectID = 141
 
 // check if there are stored projects and/or tasks to avoid an error on the forEach loop if there aren't any
 if (storedProjects) {
   // if there are projects in the localStorage their elements will be created
   storedProjects.forEach(element => {
+    element.id = projectID
+
     createTitleDOM(element)
     // push them to our empty array (it will be empty at every page load)
     allProjects.push(element)
+    projectID++
   })
 }
 
@@ -51,15 +55,15 @@ if (storedTasks) {
     // increase the taskID here and on the events.on, basically with every new task the id increases
     taskID++
   });
-  dispatchDOM()
 }
 
 // 
 updateStorage()
 
 // update with each new addition of tasks and projects
-events.on('newProjectAdded', (p_title) => {
-  createTitleDOM(p_title)
+events.on('newProjectAdded', (project) => {
+  createTitleDOM(project)
+  projectID++
 
   // confirm the new project to the user
   document.querySelector('.feedback').innerText = 'Project added!'
@@ -68,6 +72,7 @@ events.on('newProjectAdded', (p_title) => {
   }, 2000)
 
   updateStorage()
+  dispatchDOM()
 })
 
 
@@ -75,6 +80,7 @@ events.on('newValidTask', (NewTodo) => {
   // assign an unique ID to the new task, see the rendering of storedTasks for details ↑
   NewTodo.uniqueID = taskID
   render(NewTodo)
+  allTasks.push(NewTodo)
   taskID++
   
   // confirm the new task to the user for 2 seconds
@@ -95,7 +101,7 @@ export function updateStorage(){
   window.localStorage.setItem('storedProjects', JSON.stringify(allProjects))
 }
 
-function dispatchDOM(){
+export function dispatchDOM(){
   window.document.dispatchEvent(new Event("DOMContentLoaded", {
     bubbles: true,
     cancelable: true
