@@ -6,10 +6,12 @@ import "./styles/checkbox.css"
 import "./modules/modal"
 import "./modules/projects"
 import "./modules/delete"
+import "./modules/editTask"
 import "./modules/displayController"
-import events from "./modules/events"
-import {render} from "./modules/render"
-import createTitleDOM from "./modules/createProject"
+import "./modules/createNewToDo"
+import events from "./modules/events.js"
+import {render} from "./modules/render.js"
+import createTitleDOM from "./modules/createProject.js"
 
 
 // get the tasks & projects from the storage
