@@ -1,4 +1,3 @@
-import { allTasks } from "../index"
 import events from "./events"
 
 class todo {

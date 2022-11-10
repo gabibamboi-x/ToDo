@@ -55,8 +55,6 @@ window.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.feedback').innerText = ''
           }, 2000)
 
-          document.querySelector('.menu-item').click()
-
           updateStorage()
         }
       })

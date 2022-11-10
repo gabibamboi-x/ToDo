@@ -12,7 +12,6 @@ import {render} from "./modules/render"
 import createTitleDOM from "./modules/createProject"
 
 
-
 // get the tasks & projects from the storage
 const getTasks = window.localStorage.getItem('storedTasks')
 const getProjects = window.localStorage.getItem('storedProjects')
