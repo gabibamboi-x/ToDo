@@ -1,3 +1,5 @@
+import { format, getDate } from "date-fns"
+import weeksToDays from "date-fns/fp/weeksToDays"
 import events from "./events"
 
 class todo {
@@ -29,6 +31,7 @@ class todo {
   let currentPriority = 'lowP'
   document.querySelectorAll('.sw').forEach(el => {
     el.addEventListener('click', () => {
+
       // get the modal and overlay
       const modal = document.querySelector('.modal')
       const overlay = document.querySelector('.overlay')
@@ -73,6 +76,16 @@ class todo {
   })
   
   addTask.addEventListener('click', () => {
+
+    if (addTask.textContent === 'Confirm') {
+      events.emit('taskEditConfirmed', [new todo(titleValue.value, dateValue.value, 
+        descriptionValue.value, currentPriority, 'off', location.value, false), titleValue.classList[0]])      
+      closeModal.click()
+      resetModalInfo()
+      return
+    }
+
+
     // check for a title
     if ( !titleValue.value) {
       alert.innerHTML = 'Please enter the task title'
@@ -106,6 +119,8 @@ class todo {
     descriptionValue.value = ''
     currentPriority = 'lowP'
     alert.innerHTML = ''
+    dateValue.value = format(new Date, "yyyy-MM-dd")
+    addTask.textContent = 'Add Task'
     document.querySelector('#lowP').click()
   }
 })()

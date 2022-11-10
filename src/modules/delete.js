@@ -49,6 +49,8 @@ window.addEventListener('DOMContentLoaded', () => {
             el.remove()
           })
 
+          document.querySelector('.home').click()
+
           // confirm the deleted task to the user for 2 seconds
           document.querySelector('.feedback').innerText = 'Task deleted'
           setTimeout(function() {

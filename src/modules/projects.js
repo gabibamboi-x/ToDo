@@ -37,6 +37,9 @@ document.querySelector('.confirmNewProject').addEventListener('click', () => {
   if (!newProject.title) {
     document.querySelector('.no-pr-title').innerText = 'Project Name Required'
     return
+  } else if (newProject.title.split('').length > 18) {
+    document.querySelector('.no-pr-title').innerText = 'Name too long'
+    return
   }
 
   // push and emit the new title

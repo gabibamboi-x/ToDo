@@ -59,7 +59,7 @@ export function createTaskNode(el) {
   binIcon.src = edit
   binIcon.style.opacity = '0.9'
   binIcon.style.filter = 'invert(1)'
-  binIcon.setAttribute('class', 'bin')
+  binIcon.setAttribute('class', 'edit')
 
   
   // set the flag color based on priority
@@ -67,19 +67,22 @@ export function createTaskNode(el) {
     case 'low':
       const green = new Image
       green.src = greenFlag
+      green.setAttribute('class', 'flag')
       optionDiv.appendChild(green)
       break
       case 'medium':
         const blue = new Image
         blue.src = blueFlag
+        blue.setAttribute('class', 'flag')
         optionDiv.appendChild(blue)
         break
-        case 'high':
-          const red = new Image
-          red.src = redFlag
-          optionDiv.appendChild(red)
-          break
-        }
+      case 'high':
+        const red = new Image
+        red.src = redFlag
+        red.setAttribute('class', 'flag')
+        optionDiv.appendChild(red)
+        break
+  }
         
   optionDiv.appendChild(binIcon)
 

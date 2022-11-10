@@ -1,6 +1,6 @@
 import { intlFormatDistance } from "date-fns"
 import { createTaskNode } from "./createNewToDo"
-import { allProjects, allTasks, updateStorage } from ".."
+import { allProjects } from ".."
 
 export function render(el) {
 
