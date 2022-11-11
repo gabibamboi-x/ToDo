@@ -1,5 +1,4 @@
-import { format, getDate } from "date-fns"
-import weeksToDays from "date-fns/fp/weeksToDays"
+import { format } from "date-fns"
 import events from "./events"
 
 class todo {

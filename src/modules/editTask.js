@@ -1,5 +1,4 @@
 import { allTasks, updateStorage } from "..";
-import { createTaskNode } from "./createNewToDo";
 import events from "./events";
 
 window.addEventListener('DOMContentLoaded', () => {
