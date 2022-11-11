@@ -15,10 +15,11 @@ import createTitleDOM from "./modules/createProject.js"
 
 
 // get the tasks & projects from the storage
-const getTasks = window.localStorage.getItem('storedTasks')
-const getProjects = window.localStorage.getItem('storedProjects')
+const getTasks = localStorage.getItem('storedTasks')
+const getProjects = localStorage.getItem('storedProjects')
 const storedTasks = JSON.parse(getTasks)
 const storedProjects = JSON.parse(getProjects)
+
 
 export const allProjects = []
 export const allTasks = []
@@ -28,38 +29,40 @@ export let projectID = 141
 
 // check if there are stored projects and/or tasks to avoid an error on the forEach loop if there aren't any
 if (storedProjects) {
+  console.log('d')
   // if there are projects in the localStorage their elements will be created
-  storedProjects.forEach(element => {
-    element.id = projectID
+  for (let i = 0; i < storedProjects.length; i++) {
+    storedProjects[i].id = projectID
 
-    createTitleDOM(element)
-    // push them to our empty array (it will be empty at every page load)
-    allProjects.push(element)
+    console.log(storedProjects[i])
+    
+    createTitleDOM(storedProjects[i])
+    allProjects.push(storedProjects[i])
     projectID++
-  })
+  }
+
 }
 
 if (storedTasks) {
-  storedTasks.forEach(element => {
+  for (let i = 0; i < storedTasks.length; i++) {
 
     // give each element an id, when createTaskNode inside render will be executed 
     // a unique id will be assigned to the class of the specific task DOM element
-    element.uniqueID = taskID
-    render(element)
+    storedTasks[i].uniqueID = taskID
+    render(storedTasks[i])
 
     // same as with the projects the task will be pushed to the initially empty array
     // and update the localStorage based on the new array 
     // (within this forEach every element from the storage will be added to the allTasks array
     // so nothing will be lost)
-    allTasks.push(element)
+    allTasks.push(storedTasks[i])
 
     // increase the taskID here and on the events.on, basically with every new task the id increases
     taskID++
-  });
+  }
 }
 
 // 
-updateStorage()
 
 // update with each new addition of tasks and projects
 events.on('newProjectAdded', (project) => {
@@ -68,6 +71,7 @@ events.on('newProjectAdded', (project) => {
 
   // confirm the new project to the user
   document.querySelector('.feedback').innerText = 'Project added!'
+
   setTimeout(function() {
     document.querySelector('.feedback').innerText = ''
   }, 2000)
