@@ -1,14 +1,17 @@
 import { allTasks, updateStorage } from "..";
 import events from "./events";
 
+export let currentScr = ''
+
 window.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.edit').forEach(el => {
     el.addEventListener('click', () => {
 
       // emit the task id
       events.emit('getTaskID', Number(el.parentElement.parentElement.classList[0].replace('t', '')))
-      
-      console.log(Number(el.parentElement.parentElement.classList[0].replace('t', '')))
+
+      // set the screen the user is on
+      currentScr =  el.parentElement.parentElement.parentElement.classList[1]
 
       document.querySelector('.confirm').textContent = 'Confirm'
       
@@ -19,7 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       })
 
-      console.log(currTask)
       document.querySelector('.addTodo').click()
       document.querySelector('#todotitle').value = currTask.title
       document.querySelector('#todotitle').classList.add('ID' + currTask.uniqueID)
@@ -41,8 +43,10 @@ events.on('taskEditConfirmed', (el) => {
       task.projectName = el[0].projectName
       task.uniqueID = Number(el[1])
       
+      // update the storage with the new details
       updateStorage()
 
+      // reload the window
       location.reload()
       return false;
   }})
