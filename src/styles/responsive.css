@@ -1,0 +1,71 @@
+@media screen and (max-width: 850px) {
+  .menu {
+    height: calc(100vh - 110px);
+
+    background-color: rgba(86, 86, 86, 0.383);
+    backdrop-filter: blur(20px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  section.modal {
+    height: max-content;
+    width: 300px;
+  }
+
+  .modal.show {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  div.date-picker {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
+  }
+
+  .date-picker div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-items: flex-end;
+  }
+  
+  #dueDate {
+    padding: 0;
+    margin: 0;
+  }
+
+  .modal-priority-select {
+    flex-direction: column;
+    margin-inline: auto;
+  }
+
+  .alert {
+    font-size: 13px;
+  }
+
+
+
+  div.nav-btn-modal {
+    margin-top: 0px;
+    margin-inline: auto;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  header h1 {
+    font-size: 15px;
+  }
+}
