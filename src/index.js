@@ -2,6 +2,7 @@ import "./styles/main.css"
 import "./styles/modal.css"
 import "./styles/projects.css"
 import "./styles/checkbox.css"
+import "./styles/responsive.css"
 
 import "./modules/modal"
 import "./modules/projects"
@@ -10,24 +11,31 @@ import "./modules/editTask"
 import "./modules/displayController"
 import "./modules/createNewTask"
 import "./modules/addImages"
+import { currentScr } from "./modules/editTask"
 import events from "./modules/events.js"
 import {render} from "./modules/render.js"
 import { createAllDoneStatus } from "./modules/displayController"
 import createTitleDOM from "./modules/createProject.js"
 
 
+
 // get the tasks & projects from the storage
-const getTasks = localStorage.getItem('storedTasks')
-const getProjects = localStorage.getItem('storedProjects')
-const storedTasks = JSON.parse(getTasks)
-const storedProjects = JSON.parse(getProjects)
+const getPreviousScreen = JSON.parse(localStorage.getItem('scr'))
+const storedTasks = JSON.parse(localStorage.getItem('storedTasks'))
+const storedProjects = JSON.parse(localStorage.getItem('storedProjects'))
 
-
+// create new IDs starting at 141 (why at 141 you may be asking? i don't know 1 seems to low for an id number)
 export const allProjects = []
 export const allTasks = []
-// create new IDs starting at 141 (why at 141 you may be asking? i don't know 1 seems to low for an id number)
+
 export let taskID = 141
 export let projectID = 141
+
+
+if (getPreviousScreen) {
+  document.querySelector('.' + getPreviousScreen).click()
+}
+
 
 // check if there are stored projects and/or tasks to avoid an error on the forEach loop if there aren't any
 if (storedProjects) {
@@ -84,7 +92,6 @@ events.on('newProjectAdded', (project) => {
   dispatchDOM()
 })
 
-
 events.on('newValidTask', (NewTodo) => {
   // assign an unique ID to the new task, see the rendering of storedTasks for details ↑
   NewTodo.uniqueID = taskID
@@ -109,6 +116,7 @@ export function updateStorage(){
   // reset the storage and add the updated arrays
   // much easier and less code than selecting individual items and update them
   window.localStorage.clear()
+  window.localStorage.setItem('scr', JSON.stringify(currentScr))
   window.localStorage.setItem('storedTasks', JSON.stringify(allTasks))
   window.localStorage.setItem('storedProjects', JSON.stringify(allProjects))
 }
