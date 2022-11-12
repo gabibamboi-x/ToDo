@@ -5,12 +5,14 @@ import "./styles/checkbox.css"
 
 import "./modules/modal"
 import "./modules/projects"
-import "./modules/delete"
+import "./modules/deleteTasks&Projects"
 import "./modules/editTask"
 import "./modules/displayController"
-import "./modules/createNewToDo"
+import "./modules/createNewTask"
+import "./modules/addImages"
 import events from "./modules/events.js"
 import {render} from "./modules/render.js"
+import { createAllDoneStatus } from "./modules/displayController"
 import createTitleDOM from "./modules/createProject.js"
 
 
@@ -29,14 +31,15 @@ export let projectID = 141
 
 // check if there are stored projects and/or tasks to avoid an error on the forEach loop if there aren't any
 if (storedProjects) {
-  console.log('d')
   // if there are projects in the localStorage their elements will be created
   for (let i = 0; i < storedProjects.length; i++) {
+    // give each project an unique id
     storedProjects[i].id = projectID
-
-    console.log(storedProjects[i])
     
+    // create the elements needed for the project
     createTitleDOM(storedProjects[i])
+
+    // push them to the array that will be needed for updating the storage
     allProjects.push(storedProjects[i])
     projectID++
   }
@@ -60,22 +63,23 @@ if (storedTasks) {
     // increase the taskID here and on the events.on, basically with every new task the id increases
     taskID++
   }
+} else {
+  createAllDoneStatus(document.querySelector('.allContent'))
 }
-
-// 
 
 // update with each new addition of tasks and projects
 events.on('newProjectAdded', (project) => {
+  // create the new project and increase the projectID
   createTitleDOM(project)
   projectID++
 
   // confirm the new project to the user
   document.querySelector('.feedback').innerText = 'Project added!'
-
   setTimeout(function() {
     document.querySelector('.feedback').innerText = ''
   }, 2000)
 
+  // dispatch DOM to bind the event listener to the new project selection
   updateStorage()
   dispatchDOM()
 })
@@ -84,9 +88,12 @@ events.on('newProjectAdded', (project) => {
 events.on('newValidTask', (NewTodo) => {
   // assign an unique ID to the new task, see the rendering of storedTasks for details ↑
   NewTodo.uniqueID = taskID
+  // render the task
   render(NewTodo)
-  allTasks.push(NewTodo)
   taskID++
+  
+  allTasks.push(NewTodo)
+  updateStorage()
   
   // confirm the new task to the user for 2 seconds
   document.querySelector('.feedback').innerText = 'Task added!'
@@ -94,7 +101,7 @@ events.on('newValidTask', (NewTodo) => {
     document.querySelector('.feedback').innerText = ''
   }, 2000)
 
-  updateStorage()
+  // dispatching the DOm again to bind the event listener to the new delete buttons
   dispatchDOM()
 })
 
