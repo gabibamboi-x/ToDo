@@ -13,6 +13,7 @@
       <img src="./Images/sort.png" alt="menu" class="menu-nav">
       <img src="./Images/home.png" alt="home" class="home">
     </div>
+    <h1>Tasks ToDo</h1>
     <img src="./Images/newToDo.png" alt="addTodo" class="addTodo sw">
   </header>
 
@@ -62,15 +63,13 @@
       <div class="line"></div>
       
     </div>
-    
-    <p class="feedback"></p>
 
     <div class="main">
       <div class="content">
         <div class="content-header">
           <h1 class="currentTab">All Tasks</h1>
           <div class="content-options">
-            <p class="contentDate"></p>
+            <p class="feedback">rsdfzxc</p>
           </div>
         </div>
         <div class="taskview">
@@ -88,16 +87,19 @@
     <input type="text" placeholder="Title" id="todotitle">
     <textarea type="text" placeholder="Description (optional)" id="tododescription"></textarea>
     <div class="date-picker">
-      <p>Due Date:</p>
-      <input type="date" name="dueDate" id="dueDate">
-      <p class="selectLocation">Add to</p>
-
-      <select class="location">
-        <option value="inbox">Inbox</option>
-      </select>
+      <div>
+        <p>Due Date</p>
+        <input type="date" name="dueDate" id="dueDate">
+      </div>
+      <div>
+        <p class="selectLocation">Add to</p>
+        <select class="location">
+          <option value="inbox">Inbox</option>
+        </select>
+      </div>
     </div>
     <div class="modal-priority-select">
-      <p>Priority:</p>
+      <p>Priority</p>
       <div>
         <button class="priorityBtn active-selection" id="lowP">Low</button>
         <button class="priorityBtn" id="mediumP">Medium</button> 
@@ -106,8 +108,10 @@
     </div>
     <div class="nav-btn-modal">
       <div class="alert"></div>
-      <button class="cancel sw">Cancel</button>
-      <button class="confirm">Add task</button>
+      <div>
+        <button class="cancel sw">Cancel</button>
+        <button class="confirm">Add task</button>
+      </div>
     </div>
   </section>
 
