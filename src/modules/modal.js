@@ -1,4 +1,5 @@
 import { format } from "date-fns"
+import updateMenuListeners from "./displayController"
 import events from "./events"
 
 class todo {
@@ -73,18 +74,16 @@ class todo {
       }
     })
   })
+
+
+
+  let modifiedTaskID
+  events.on('getTaskID', (id) => {
+    modifiedTaskID = id
+  })
+
   
   addTask.addEventListener('click', () => {
-
-    if (addTask.textContent === 'Confirm') {
-      events.emit('taskEditConfirmed', [new todo(titleValue.value, dateValue.value, 
-        descriptionValue.value, currentPriority, 'off', location.value, false), titleValue.classList[0]])      
-      closeModal.click()
-      resetModalInfo()
-      return
-    }
-
-
     // check for a title
     if ( !titleValue.value) {
       alert.innerHTML = 'Please enter the task title'
@@ -96,12 +95,22 @@ class todo {
       return
     }
 
+
+    if (addTask.textContent === 'Confirm') {
+      events.emit('taskEditConfirmed', [new todo(titleValue.value, dateValue.value, 
+        descriptionValue.value, currentPriority, 'off', location.value, false), modifiedTaskID])      
+      closeModal.click()
+      resetModalInfo()
+      return
+    }
+
     
     // create new ToDo object and emit it, reset the modal and close it
     const NewTodo = new todo(titleValue.value, dateValue.value, descriptionValue.value, currentPriority, 'off', location.value, false)
     closeModal.click()
     resetModalInfo()
     events.emit('newValidTask', NewTodo)
+    updateMenuListeners()
   })
 
   document.querySelectorAll('.priorityBtn').forEach(el => el.addEventListener('click', () => {

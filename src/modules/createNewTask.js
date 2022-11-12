@@ -33,6 +33,7 @@ export function createTaskNode(el) {
   const dueDiv = document.createElement('div')
   dueDiv.setAttribute('class', 'dueContent')
 
+  // add a due date icon
   const dueIcon = new Image
   dueIcon.src = due
 
@@ -40,7 +41,7 @@ export function createTaskNode(el) {
   const taskDueDate = document.createElement('p')
   taskDueDate.setAttribute('class', 'dueDate_p')
 
-  // format the date
+  // format the date, set overdue if the date has passed
   const date = intlFormatDistance(new Date(el.dueDate), new Date, { unit: 'day' })
   if (date === 'yesterday' || date.split(' ')[2] === 'ago') {
     taskDueDate.innerHTML = 'overdue'
@@ -55,11 +56,12 @@ export function createTaskNode(el) {
   const optionDiv = document.createElement('div')
   optionDiv.setAttribute('class', 'optionDiv')
 
-  const binIcon = new Image
-  binIcon.src = edit
-  binIcon.style.opacity = '0.9'
-  binIcon.style.filter = 'invert(1)'
-  binIcon.setAttribute('class', 'edit')
+  // add the edit icon to the project menu selection
+  const editIcon = new Image
+  editIcon.src = edit
+  editIcon.style.opacity = '0.9'
+  editIcon.style.filter = 'invert(1)'
+  editIcon.setAttribute('class', 'edit')
 
   
   // set the flag color based on priority
@@ -84,7 +86,7 @@ export function createTaskNode(el) {
         break
   }
         
-  optionDiv.appendChild(binIcon)
+  optionDiv.appendChild(editIcon)
 
   // append the created elements
   taskWrapper.appendChild(taskTitle)
@@ -95,5 +97,7 @@ export function createTaskNode(el) {
   newTask.appendChild(taskWrapper)
   newTask.appendChild(optionDiv)
 
+  // return the created node that will then be appended to it's
+  // div with render
   return newTask
 }
