@@ -2,8 +2,9 @@
   .menu {
     height: calc(100vh - 110px);
 
-    background-color: rgba(86, 86, 86, 0.383);
-    backdrop-filter: blur(20px);
+    background-color: rgba(86, 86, 86, 0.512);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
   }
 }
 
@@ -62,10 +63,32 @@
     margin-inline: auto;
     flex-direction: column;
   }
+
+  .credit {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 425px) {
   header h1 {
     font-size: 15px;
+  }
+
+  .optionDiv img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .dueContent {
+    font-size: 12px;
+  }
+
+  .dueContent img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .credit {
+    font-size: 8px;
   }
 }

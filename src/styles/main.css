@@ -55,8 +55,8 @@ section.initial {
 .menu {
   position: relative;
   min-width: 300px;
-  height: 100%;
   display: flex;
+  height: calc(100vh - 90px);
   flex-direction: column;
   color: var(--mainColor);
   padding: 40px 30px;
@@ -68,10 +68,14 @@ section .main {
   position: absolute;
   height: calc(100vh - 90px);
   width: 100%;
-  padding: 20px 50px;
-  padding-left: 350px;
+  padding: 20px 80px;
+  padding-left: 380px;
   display: flex;
   transition: padding-left .5s;
+}
+
+.remove-task {
+  animation: shrink .8s;
 }
 
 .open-menu {
@@ -85,6 +89,7 @@ section .main {
 
 @keyframes slideMenu { from { left: -300px; } to { left: 0px; } }
 @keyframes slideBack { from { left: 0px; } to { left: -300px; } }
+@keyframes shrink { from { scale: 1 } to { scale: 0 } }
 
 
 section .menu-item {
@@ -162,13 +167,14 @@ section .content {
 .taskview {
   position: absolute;
   overflow: auto;
+  overflow-y: overlay;
   width: 100%;
   max-height: calc(100% - 80px);
   top: 60px;
 }
 
 .missingContent {
-  margin-top: 70px;
+  margin-top: 85px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -213,17 +219,15 @@ section .content {
 }
 
 ::-webkit-scrollbar {
-  width: 25px;
+  width: 2.5px;
 }
-
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 10px 10px rgb(0, 0, 0);
-  border: solid 12px transparent;
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 10px 10px rgb(255, 255, 255);
-  border: solid 12px transparent;
+  background-color: rgb(254, 254, 254);
+  border-radius: 10px;
+  border: transparent;
 }
 
 .task {
@@ -254,6 +258,10 @@ section .content {
   margin-left: auto;
 }
 
+.bin {
+  opacity: .45;
+}
+
 .optionDiv img {
   width: 30px;
   height: 30px;
@@ -275,6 +283,7 @@ section .content {
 
 .dueContent {
   display: flex;
+  align-items: center;
   gap: 8px;
   padding-top: 14px;
   padding-bottom: 5px;
@@ -283,7 +292,6 @@ section .content {
 .dueContent img {
   width: 20px;
   filter: invert(1);
-  cursor: pointer;
 }
 
 .task > div > p {
@@ -303,6 +311,7 @@ section .content {
 
 .edit:hover,
 .binProject:hover,
+.bin:hover,
 .addTodo:hover {
   transform: scale(1.2);
 }
@@ -313,7 +322,13 @@ section .content {
 
 footer {
   padding: 12px;
-  margin-top: -10px;
+  margin-top: -15px;
+  opacity: .3;
+}
+
+footer div {
+  display: flex;
+  justify-content: center;
 }
 
 a {
@@ -327,4 +342,13 @@ a {
 
 a img {
   width: 20px;
+}
+
+.credit {
+  padding-top: 3px;
+  font-size: 12px;
+}
+
+.me {
+  font-size: 15px;
 }
