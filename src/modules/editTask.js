@@ -4,6 +4,15 @@ import events from "./events";
 export let currentScr = ''
 
 window.addEventListener('DOMContentLoaded', () => {
+
+  document.querySelectorAll('.check').forEach(box => {
+    box.addEventListener('change', () => {
+      document.querySelector('.feedback').textContent = 'Task Completed'
+      box.parentElement.querySelector('.bin').click()
+    })
+  })
+
+
   document.querySelectorAll('.edit').forEach(el => {
     el.addEventListener('click', () => {
 
@@ -11,7 +20,12 @@ window.addEventListener('DOMContentLoaded', () => {
       events.emit('getTaskID', Number(el.parentElement.parentElement.classList[0].replace('t', '')))
 
       // set the screen the user is on
-      currentScr =  el.parentElement.parentElement.parentElement.classList[1]
+      const currScr = el.parentElement.parentElement.parentElement.classList[1]
+      if (currScr.split('')[5] < 5) {
+        currentScr =  currScr
+      } else {
+        currentScr = 'data-1'
+      }
 
       document.querySelector('.confirm').textContent = 'Confirm'
       
@@ -48,6 +62,7 @@ events.on('taskEditConfirmed', (el) => {
 
       // reload the window
       location.reload()
+
       return false;
   }})
 })
