@@ -34,10 +34,10 @@ Building this project allowed me get a better understanding of the DOM and helpe
 [Google Fonts  (Downloaded)](https://fonts.google.com)
 
 
-## Features
+## Live Demo
 
-- Live previews
-- Mobile support
+Check it out [here](https://gabibamboi-x.github.io/ToDo/)
+
 
 
 ## Authors
