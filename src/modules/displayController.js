@@ -105,14 +105,19 @@ document.querySelector('.menu-nav').addEventListener('click', () => {
   const menu = document.querySelector('.menu')
   
   if (innerWidth < 850) {
+    // for tablets and mobile devices the padding is less
+    // and the menu position is set to absolute to avoid 
+    // pushing the content div to much towards right
     paddingSize = '25px'
-    document.querySelector('.menu').style.position = 'absolute'
+    menu.style.position = 'absolute'
     paddingNew = '20px'
   } else {
-    paddingSize = '50px'
-    paddingNew = '350px'
+    paddingSize = '80px'
+    paddingNew = '380px'
   }
 
+  // using the state variable we set the button's action
+  // if open we close the menu and return
   if (state === 'open') {
     menu.classList.remove('open-menu')
     menu.classList.add('close-menu')
@@ -126,6 +131,7 @@ document.querySelector('.menu-nav').addEventListener('click', () => {
     return
   }
   
+  // we open the menu if the state is on closed
   document.querySelector('.main').style.paddingLeft = paddingNew
   menu.classList.remove('close-menu')
   menu.style.display = 'block'
@@ -134,31 +140,26 @@ document.querySelector('.menu-nav').addEventListener('click', () => {
   state = 'open'
 })
 
+// the menu will automatically close and open on resizing the window
+// based on the width
 window.addEventListener('resize', () => {
   if (innerWidth < 750) {
     state = 'open'
     document.querySelector('.menu-nav').click()
     document.querySelector('.main').style.paddingInline = '25px'
+  } else {
+    state = 'closed'
+    document.querySelector('.menu-nav').click()
   }
 })
 
+
 window.addEventListener('DOMContentLoaded', () => {
+  // set the padding if loaded directly on a smaller screen
   if (innerWidth < 850) {
     state = 'open'
     document.querySelector('.menu-nav').click()
     document.querySelector('.main').style.paddingInline = '25px'
     return
   } 
-
-  if (!document.querySelector('.allContent').firstChild) {
-    createAllDoneStatus(document.querySelector('.allContent'))
-  }
 })
-
-
-document.querySelectorAll('.check').forEach(check => {
-  check.addEventListener('check', () => {
-    // TODO
-  })
-})
-

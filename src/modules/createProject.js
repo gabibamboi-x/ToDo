@@ -16,6 +16,7 @@ export default function createTitleElements(project) {
   newLi.setAttribute('class', 'menu-item data-' + 
     (allProjects.length + 6) + ' p' + project.id)
   newLi.appendChild(title)
+  
 
   // add the bin image to the menu div
   const binIcn = new Image

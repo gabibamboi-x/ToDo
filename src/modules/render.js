@@ -8,17 +8,19 @@ export function render(el) {
 
   if (el.projectName.toLowerCase() === 'inbox' ) {    
 
+    // check if the task date is in the next 7 days
     if((currentDistance[0] === 'in' && currentDistance[1] > 0 && 
         currentDistance[1] < 8 && currentDistance[2] === 'days') || currentDistance[0] === 'tomorrow') {
       hideStatus(document.querySelector('.upcomingContent'))
       document.querySelector('.upcomingContent').appendChild(createTaskNode(el))
 
+      // check for today
     } else if (currentDistance[0] === 'today') {
       hideStatus(document.querySelector('.todayContent'))
       document.querySelector('.todayContent').appendChild(createTaskNode(el))
     }
     
-
+    // based on th task's priority, if it's high it's added to the important section
     if (el.priority.slice(0, -1).toUpperCase() === 'HIGH') {
       document.querySelector('.importantContent')
       document.querySelector('.importantContent').appendChild(createTaskNode(el))
@@ -41,6 +43,7 @@ export function render(el) {
     }
   })
 
+  // hide the status when a new task is added
   function hideStatus(tabContent) {
     if(tabContent.querySelector('.missingContent')) {
       tabContent.querySelector('.missingContent').classList.add('missingHide')

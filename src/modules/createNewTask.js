@@ -3,6 +3,7 @@ import blueFlag from "../Images/blueFlag.png"
 import redFlag from "../Images/redFlag.png"
 import due from "../Images/dueDate.png"
 import edit from "../Images/edit.png"
+import binPic from "../Images/bin.png"
 import { intlFormatDistance } from "date-fns"
 
 
@@ -17,6 +18,7 @@ export function createTaskNode(el) {
   const checkbox = document.createElement('input')
   checkbox.setAttribute('type', 'checkbox')
   checkbox.setAttribute('class', 'check')
+
   
   // wrapper for title, description, and due date
   const taskWrapper = document.createElement('div')
@@ -85,8 +87,13 @@ export function createTaskNode(el) {
         optionDiv.appendChild(red)
         break
   }
-        
+
+  const bin = new Image
+  bin.src = binPic
+  bin.setAttribute('class', 'bin')
+  
   optionDiv.appendChild(editIcon)
+  optionDiv.appendChild(bin)
 
   // append the created elements
   taskWrapper.appendChild(taskTitle)
