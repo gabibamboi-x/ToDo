@@ -38,6 +38,8 @@ if (getPreviousScreen) {
   if (!document.querySelector('.' + getPreviousScreen).firstChild) {
     createAllDoneStatus(document.querySelector('.' + getPreviousScreen))
   }
+} else {
+  createAllDoneStatus(document.querySelector('.allContent'))
 }
 
 
@@ -75,8 +77,6 @@ if (storedTasks) {
     // increase the taskID here and on the events.on, basically with every new task the id increases
     taskID++
   }
-} else {
-  createAllDoneStatus(document.querySelector('.allContent'))
 }
 
 // update with each new addition of tasks and projects
