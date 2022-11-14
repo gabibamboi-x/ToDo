@@ -34,6 +34,17 @@ export let projectID = 141
 
 if (getPreviousScreen) {
   document.querySelector('.' + getPreviousScreen).click()
+
+  if (!document.querySelector('.' + getPreviousScreen).firstChild) {
+    createAllDoneStatus(document.querySelector('.' + getPreviousScreen))
+  }
+  
+} else {
+
+  if (!document.querySelector('.allContent').firstChild) {
+    createAllDoneStatus(document.querySelector('.allContent'))
+  }
+
 }
 
 
