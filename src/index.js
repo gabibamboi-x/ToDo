@@ -38,13 +38,6 @@ if (getPreviousScreen) {
   if (!document.querySelector('.' + getPreviousScreen).firstChild) {
     createAllDoneStatus(document.querySelector('.' + getPreviousScreen))
   }
-  
-} else {
-
-  if (!document.querySelector('.allContent').firstChild) {
-    createAllDoneStatus(document.querySelector('.allContent'))
-  }
-
 }
 
 
