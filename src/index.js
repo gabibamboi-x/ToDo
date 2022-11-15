@@ -40,13 +40,12 @@ if (storedProjects) {
   for (let i = 0; i < storedProjects.length; i++) {
     // give each project an unique id
     storedProjects[i].id = projectID
-
     
     // create the elements needed for the project
     createTitleDOM(storedProjects[i])
-
+    
     // add the delete event listener
-    const pDiv = document.querySelector('.p' + projectID)
+    const pDiv = document.querySelector('.p' + projectID.toString())
     addMenuListener(pDiv)
   
     const currentIcon = pDiv.querySelector('.binProject')
@@ -90,7 +89,7 @@ events.on('newProjectAdded', (project) => {
   // create the new project and increase the projectID
   createTitleDOM(project)
 
-  const pDiv = document.querySelector('.p' + projectID)
+  const pDiv = document.querySelector('.p' + projectID.toString())
   addMenuListener(pDiv)
 
   const currentIcon = pDiv.querySelector('.binProject')

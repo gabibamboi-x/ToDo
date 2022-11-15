@@ -1,7 +1,7 @@
 import { allProjects } from "../index"
 import bin from "../Images/bin.png"
 import { dom } from "./getDOM"
-import { createAllDoneStatus } from "./displayController"
+import happyCat from "../Images/allDone.png"
 
 export default function createTitleElements(project) {
 

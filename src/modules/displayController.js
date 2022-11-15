@@ -15,10 +15,14 @@ dom.home.addEventListener('click', () => {
 
 
 let state = 'open'
+
 export function addMenuListener(el) {
   el.addEventListener('click', () => {
 
-    dom.tabs.forEach(tab => {
+    document.querySelectorAll('.tab').forEach(tab => {
+      // reset the active-tab
+      tab.classList.remove('active-tab')
+
       // checking for the first child
       if (!tab.firstChild) {
         
@@ -34,13 +38,10 @@ export function addMenuListener(el) {
         tab.querySelector('.missingContent').classList.remove('missingHide')
 
       }
-      
-      // reset the active-tab
-      tab.classList.remove('active-tab')
     })
     
     // reset the active menu item
-    dom.menu_items.forEach(item => {
+    document.querySelectorAll('.menu-items').forEach(item => {
       item.classList.remove('active-menu-item')
     })
     
