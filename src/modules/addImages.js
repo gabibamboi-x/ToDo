@@ -7,15 +7,16 @@ import upcoming from "../Images/upcoming.svg"
 import important from "../Images/important.svg"
 import git from "../Images/gitlogo.png"
 import expand from "../Images/close_projects.svg"
+import { dom } from "./getDOM"
 
 
-document.querySelector('.menu-nav').src = menu
-document.querySelector('.home').src = home
-document.querySelector('.addTodo').src = addTodo
-document.querySelector('.alltasks').src = alltasks
-document.querySelector('.today').src = today
-document.querySelector('.upcoming').src = upcoming
-document.querySelector('.important').src = important
-document.querySelector('.newProject').src = addTodo
-document.querySelector('.expand-projects').src = expand
-document.querySelector('.git').src = git
+dom.menu.src = menu
+dom.home.src = home
+dom.addTodo.src = addTodo
+dom.allTasksMenu.src = alltasks
+dom.todayMenu.src = today
+dom.upcomingMenu.src = upcoming
+dom.importantMenu.src = important
+dom.newProject.src = addTodo
+dom.expand.src = expand
+dom.gitImg.src = git

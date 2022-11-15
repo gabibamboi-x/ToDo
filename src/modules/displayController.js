@@ -1,64 +1,72 @@
 import events from "./events"
 import happyCat from "../Images/allDone.png"
+import { dom } from "./getDOM"
 
-document.querySelector('.home').addEventListener('click', () => {
-  document.querySelector('.data-1').click()
+
+
+
+
+dom.home.addEventListener('click', () => {
+  dom.data1.click()
 })
 
-// add the listeners to menu elements
-updateMenuListeners()
+
+
+
 
 let state = 'open'
+export function addMenuListener(el) {
+  el.addEventListener('click', () => {
 
-export default function updateMenuListeners() {
-  document.querySelectorAll('.menu-item').forEach(el => 
-    el.addEventListener('click', () => {
-
-      
-      document.querySelectorAll('.tab').forEach(tab => {
-        // checking for the first child
-        if (!tab.firstChild) {
-          
-          createAllDoneStatus(tab)
-          
-          // check if there is a second child and hide the picture with the message if so
-        } else if (tab.querySelector('.missingContent') && tab.children.length > 1) {
-          tab.querySelector('.missingContent').classList.add('missingHide')
-        } else if (tab.querySelector('.missingContent')) {
-          tab.querySelector('.missingContent').classList.remove('missingHide')
-        }
+    dom.tabs.forEach(tab => {
+      // checking for the first child
+      if (!tab.firstChild) {
         
-        // reset the active-tab
-        tab.classList.remove('active-tab')
-      })
-      
-      // reset the active menu item
-      document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active-menu-item')
-      })
-      
-      
-      // add the active-tab to the clicked element
-      const tabs = document.querySelector('.taskview')
-      const currTab = tabs.querySelector('.' + el.classList.value.split(' ')[1])
-      if (currTab) {
-        currTab.classList.add('active-tab')
-        // let the user know on which section he chose
-        el.classList.add('active-menu-item')
-      }
-      
-      if (innerWidth < 850) {
-        state = 'open'
-        document.querySelector('.menu-nav').click()
-      }
+        createAllDoneStatus(tab)
+        
+        // check if there is a second child and hide the picture with the message if so
+      } else if (tab.querySelector('.missingContent') && tab.children.length > 1) {
 
-      // update the tab title
-      document.querySelector('.currentTab').innerText = el.querySelector('p').innerText
+        tab.querySelector('.missingContent').classList.add('missingHide')
+
+      } else if (tab.querySelector('.missingContent')) {
+
+        tab.querySelector('.missingContent').classList.remove('missingHide')
+
+      }
+      
+      // reset the active-tab
+      tab.classList.remove('active-tab')
     })
-  )
+    
+    // reset the active menu item
+    dom.menu_items.forEach(item => {
+      item.classList.remove('active-menu-item')
+    })
+    
+    
+    // add the active-tab to the clicked element
+    const currTab = dom.taskview.querySelector('.' + el.classList.value.split(' ')[1])
+    if (currTab) {
+      currTab.classList.add('active-tab')
+      // let the user know on which section he chose
+      el.classList.add('active-menu-item')
+    }
+    
+    if (innerWidth < 850) {
+      state = 'open'
+      dom.menu.click()
+    }
+    
+    // update the tab title
+    dom.currentTab.innerText = el.querySelector('p').innerText
+  })
 }
+  
 
 
+
+  
 export function createAllDoneStatus(tab){
   // create the all done element if there is not first child
   const newMissing = document.createElement('div')
@@ -72,7 +80,7 @@ export function createAllDoneStatus(tab){
   addNewTask.textContent = 'Add new task'
 
   addNewTask.addEventListener('click', () => {
-  document.querySelector('.addTodo').click()
+    dom.addTodo.click()
   })
 
   // set the picture
@@ -89,6 +97,8 @@ export function createAllDoneStatus(tab){
 
 
 
+
+
 // select the new option when a project is deleted
 events.on('sibling', (selection) => {
   setTimeout(function() {
@@ -97,19 +107,21 @@ events.on('sibling', (selection) => {
 })
 
 
+
+
+
 // add the transition to the menu section
 let paddingSize
 let paddingNew
-document.querySelector('.menu-nav').addEventListener('click', () => {
-  
-  const menu = document.querySelector('.menu')
+
+dom.menu.addEventListener('click', () => {
   
   if (innerWidth < 850) {
     // for tablets and mobile devices the padding is less
     // and the menu position is set to absolute to avoid 
     // pushing the content div to much towards right
     paddingSize = '25px'
-    menu.style.position = 'absolute'
+    dom.menu_div.style.position = 'absolute'
     paddingNew = '20px'
   } else {
     paddingSize = '80px'
@@ -119,12 +131,12 @@ document.querySelector('.menu-nav').addEventListener('click', () => {
   // using the state variable we set the button's action
   // if open we close the menu and return
   if (state === 'open') {
-    menu.classList.remove('open-menu')
-    menu.classList.add('close-menu')
-    document.querySelector('.main').style.paddingInline = paddingSize
+    dom.menu_div.classList.remove('open-menu')
+    dom.menu_div.classList.add('close-menu')
+    dom.main.style.paddingInline = paddingSize
     
     setTimeout(() => {
-      menu.style.display = 'none'
+      dom.menu_div.style.display = 'none'
     }, 400)
 
     state = 'closed'
@@ -132,10 +144,10 @@ document.querySelector('.menu-nav').addEventListener('click', () => {
   }
   
   // we open the menu if the state is on closed
-  document.querySelector('.main').style.paddingLeft = paddingNew
-  menu.classList.remove('close-menu')
-  menu.style.display = 'block'
-  menu.classList.add('open-menu')
+  dom.main.style.paddingLeft = paddingNew
+  dom.menu_div.classList.remove('close-menu')
+  dom.menu_div.style.display = 'block'
+  dom.menu_div.classList.add('open-menu')
   
   state = 'open'
 })
@@ -145,11 +157,11 @@ document.querySelector('.menu-nav').addEventListener('click', () => {
 window.addEventListener('resize', () => {
   if (innerWidth < 750) {
     state = 'open'
-    document.querySelector('.menu-nav').click()
-    document.querySelector('.main').style.paddingInline = '25px'
+    dom.menu.click()
+    dom.main.style.paddingInline = '25px'
   } else {
     state = 'closed'
-    document.querySelector('.menu-nav').click()
+    dom.menu.click()
   }
 })
 
@@ -158,8 +170,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // set the padding if loaded directly on a smaller screen
   if (innerWidth < 850) {
     state = 'open'
-    document.querySelector('.menu-nav').click()
-    document.querySelector('.main').style.paddingInline = '25px'
-    return
+    dom.menu.click()
+    dom.main.style.paddingInline = '25px'
   } 
 })

@@ -1,51 +1,43 @@
-import { allTasks, updateStorage } from "..";
-import events from "./events";
+import { allTasks, updateStorage } from ".."
+import events from "./events"
+import { dom } from "./getDOM"
 
-export let currentScr = ''
+let taskEditID;
 
-window.addEventListener('DOMContentLoaded', () => {
 
-  document.querySelectorAll('.check').forEach(box => {
-    box.addEventListener('change', () => {
-      document.querySelector('.feedback').textContent = 'Task Completed'
-      box.parentElement.querySelector('.bin').click()
-    })
+export function setComplete(box) {
+  box.addEventListener('change', () => {
+    dom.feedback.textContent = 'Task Completed'
+    box.parentElement.querySelector('.bin').click()
+  })
+}
+
+
+export function editTask(el) {
+  taskEditID = el.parentElement.parentElement.classList[0]
+  
+  // emit the task id
+  events.emit('getTaskID', Number(el.parentElement.parentElement.classList[0].replace('t', '')))
+
+  dom.confirm.textContent = 'Confirm'
+  
+  let currTask;
+  allTasks.forEach(task => {
+    if (task.uniqueID === Number(el.parentElement.parentElement.classList[0].replace('t', ''))) {
+      currTask = task
+    }
   })
 
+  dom.addTodo.click()
+  dom.modalTitle.value = currTask.title
+  dom.modalTitle.classList.add('ID' + currTask.uniqueID)
+  dom.modalDescription.value = currTask.description
+  dom.modalDate.value = currTask.dueDate
+  dom.location.setAttribute('selected', 'selected') 
+  document.querySelector('#' + currTask.priority).click()
+}
 
-  document.querySelectorAll('.edit').forEach(el => {
-    el.addEventListener('click', () => {
 
-      // emit the task id
-      events.emit('getTaskID', Number(el.parentElement.parentElement.classList[0].replace('t', '')))
-
-      // set the screen the user is on
-      const currScr = el.parentElement.parentElement.parentElement.classList[1]
-      if (currScr.split('')[5] < 5) {
-        currentScr =  currScr
-      } else {
-        currentScr = 'data-1'
-      }
-
-      document.querySelector('.confirm').textContent = 'Confirm'
-      
-      let currTask;
-      allTasks.forEach(task => {
-        if (task.uniqueID === Number(el.parentElement.parentElement.classList[0].replace('t', ''))) {
-          currTask = task
-        }
-      })
-
-      document.querySelector('.addTodo').click()
-      document.querySelector('#todotitle').value = currTask.title
-      document.querySelector('#todotitle').classList.add('ID' + currTask.uniqueID)
-      document.querySelector('#tododescription').value = currTask.description
-      document.querySelector('#dueDate').value = currTask.dueDate
-      document.querySelector('.location').setAttribute('selected', 'selected') 
-      document.querySelector('#' + currTask.priority).click()
-    })
-  })
-})
 
 events.on('taskEditConfirmed', (el) => {
   allTasks.forEach(task => {
@@ -55,14 +47,12 @@ events.on('taskEditConfirmed', (el) => {
       task.dueDate = el[0].dueDate
       task.priority = el[0].priority
       task.projectName = el[0].projectName
-      task.uniqueID = Number(el[1])
       
       // update the storage with the new details
       updateStorage()
-
-      // reload the window
+      
       location.reload()
-
-      return false;
-  }})
+      return false
+    }
+  })
 })

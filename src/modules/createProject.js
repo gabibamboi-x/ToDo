@@ -1,6 +1,7 @@
 import { allProjects } from "../index"
-import updateMenuListeners from "./displayController"
 import bin from "../Images/bin.png"
+import { dom } from "./getDOM"
+import { createAllDoneStatus } from "./displayController"
 
 export default function createTitleElements(project) {
 
@@ -36,10 +37,7 @@ export default function createTitleElements(project) {
   contentView.setAttribute('class', 'tab data-' + (allProjects.length + 6) + ' projectContent' + ' p' + project.id)
 
   // append them to the DOM
-  document.querySelector('.orderedProjects').appendChild(newLi)
-  document.querySelector('.taskview').appendChild(contentView)
-  document.querySelector('.location').appendChild(newOption)
-
-  // call the updateMenuListeners to add listeners to the new projects menu options
-  updateMenuListeners()
+  dom.projectsList.appendChild(newLi)
+  dom.taskview.appendChild(contentView)
+  dom.location.appendChild(newOption)
 }

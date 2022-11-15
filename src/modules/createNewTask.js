@@ -74,18 +74,18 @@ export function createTaskNode(el) {
       green.setAttribute('class', 'flag')
       optionDiv.appendChild(green)
       break
-      case 'medium':
-        const blue = new Image
-        blue.src = blueFlag
-        blue.setAttribute('class', 'flag')
-        optionDiv.appendChild(blue)
-        break
-      case 'high':
-        const red = new Image
-        red.src = redFlag
-        red.setAttribute('class', 'flag')
-        optionDiv.appendChild(red)
-        break
+    case 'medium':
+      const blue = new Image
+      blue.src = blueFlag
+      blue.setAttribute('class', 'flag')
+      optionDiv.appendChild(blue)
+      break
+    case 'high':
+      const red = new Image
+      red.src = redFlag
+      red.setAttribute('class', 'flag')
+      optionDiv.appendChild(red)
+      break
   }
 
   const bin = new Image
@@ -94,16 +94,16 @@ export function createTaskNode(el) {
   
   optionDiv.appendChild(editIcon)
   optionDiv.appendChild(bin)
-
+  
   // append the created elements
   taskWrapper.appendChild(taskTitle)
   taskWrapper.appendChild(taskDescription)
   taskWrapper.appendChild(dueDiv)
-
+  
   newTask.appendChild(checkbox)
   newTask.appendChild(taskWrapper)
   newTask.appendChild(optionDiv)
-
+  
   // return the created node that will then be appended to it's
   // div with render
   return newTask
