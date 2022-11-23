@@ -1,5 +1,5 @@
 
-# Restaurant Page
+# Tasks ToDo
 
 Tasks ToDo, a website where you can plan your day, week and even projects by adding tasks to you list. 
 
